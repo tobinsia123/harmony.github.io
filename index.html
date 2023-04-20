@@ -1,184 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--Xholon Workbook http://www.primordion.com/Xholon/gwt/ MIT License, Copyright (C) Ken Webb, Fri May 16 2014 11:29:59 GMT-0400 (EDT)-->
-<XholonWorkbook>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Preserving Cultural Music - User Interface</title>
+</head>
+<body>
+	<h1>Welcome to the Preserving Cultural Music Platform</h1>
+	<p>Use this interface to search and discover music from different cultures around the world.</p>
+	<form>
+		<label for="search">Search for music:</label>
+		<input type="text" id="search" name="search" placeholder="Enter keyword">
+		<button type="submit">Search</button>
+	</form>
+	<h2>Featured Cultures:</h2>
+	<ul>
+		<li><a href="#">African Music</a></li>
+		<li><a href="#">Asian Music</a></li>
+		<li><a href="#">Latin Music</a></li>
+		<li><a href="#">European Music</a></li>
+		<li><a href="#">Middle Eastern Music</a></li>
+	</ul>
+	<h2>Recent Searches:</h2>
+	<ul>
+		<li><a href="#">Music from India</a></li>
+		<li><a href="#">Traditional Chinese Music</a></li>
+		<li><a href="#">South African Music</a></li>
+		<li><a href="#">Arabian Music</a></li>
+		<li><a href="#">Brazilian Music</a></li>
+	</ul>
+</body>
+</html>
 
-<Notes><![CDATA[
-Xholon
-------
-Title: Universal User Interface (UUI)
-Description: 
-Url: http://www.primordion.com/Xholon/gwt/Xholon.html?app=bf9f46947af55015be4a&src=gist&gui=none
-InternalName: bf9f46947af55015be4a
-Keywords: 
-
-My Notes
---------
-To run this app (assuming you are using editwb.html to view this workbook):
-- Click the "none" button above
-  - A Xholon runtime page will open in a separate tab or window
-  - It will execute the app defined in this workbook
-  - The page will include a D3 Circle Pack SVG image
-- Hover above each node to see its tooltip
-  - Any node referenced by that context node will be displayed with an orange background
-  - Any node that references that context node will be displayed with an orange border
-- Click each node to see it's brief description in the out tab
-- Right-click each node to see it's context menu
-
-You can also run the app directly:
-    http://www.primordion.com/Xholon/gwt/Xholon.html?app=bf9f46947af55015be4a&src=gist&gui=none
-
-I already have an informal concept of a Universal User Interface (UUI), and many examples.
-In this workbook I explore a bit more of what a UUI is.
-
-The basic idea:
-- all systems are structured as one or more graphs and/or trees
-  - Xholon makes these structures explicit, but not necessarily visible
-- a UUI makes these structures visible
-  - all nodes
-  - all relationships between parent and child nodes
-  - all other graph relationships between nodes
-- a UUI allows users to request any and all functionality these systems provide
-- the same type of UUI can be used for any system
-
-a previous coworker mentioned usability and functionality?
-- I'm interested in a UUI that offers basic funtionality
-  - that can then be extended to provide better usability
-- a minimal UI that provides just enough to allow for the intended functionality
-  - a solid base for building a UI with high usability
-
-Some implementations of a UUI:
-- D3 Circle Packing
-- HTML div structures
-- indentation, such as in the Xholon classic GUI
-- paired parentheses
-- 
-
-The Xholon D3 Circle Packing GUI is a good example of a UUI:
-- at any given time, one node is the context node
-- external nodes have a single letter (with no circle)
-  - instead of including the complete name of the node
-  - all external node circles are the same size, just large enough to contain a single letter or symbol or icon
-- internal nodes have a circle with one or more other nodes inside, but no letter
-- adjacent nodes (nodes that the context node points to) are highlighted when the user hovers over a node
-  - instead of using lines to show these graph relationships
-- nodes that point to the context node are optionally highlighted in a different way
-- the node's complete name is shown as a tooltip when the user hovers
-- left-click any node to see it's toString() value in the out tab
-- right-click any node to get a context menu
-- tens or hundreds of thousands of nodes can be packed onto a computer screen
-- structure is of primary importance, not the names of things
-- the positions of things are always the same, from one run of the app to another
-- the node's color can show what type of node it is
-- clonons[18] are visible by their recurring shape
-- any Xholon app, and any part of any Xholon app, can be displayed using D3 circle packing
-- the result is a nicer presentation than with popular force-directed visualizations
-- two-dimensional circle packing could be extended to three-dimensional sphere packing
-- D3 uses Scalable Vector Graphics (SVG), which allows objects to be arbitrarily and vanishingly small
-  - so the only limit to how nodes can be on the screen is the amount of memory in the computer
-- a circle packing can be updated in-place each time step while an app is running
-  - or a new circle packing can be displayed each time step, allowing comparison
-  - the evolving circle packing can be written to a video file for subsequent replay
-- 
-
-Xholon example apps that demonstrate particularly well the D3 Circle Pack GUI:
-    http://www.primordion.com/Xholon/gwt/Xholon.html?app=Cell&gui=d3cp
-    http://www.primordion.com/Xholon/gwt/Xholon.html?app=GameOfLife&gui=d3cp
-    http://www.primordion.com/Xholon/gwt/Xholon.html?app=Life&gui=d3cp
-    http://www.primordion.com/Xholon/gwt/Xholon.html?app=7888333&src=gist&gui=d3cp
-    http://www.primordion.com/Xholon/gwt/Xholon.html?app=11358183&src=gist&gui=d3cp
-
-Ideas:
-
-* our eyes only focus on a very small part of any diagram at any instant
-  - the circle packing GUI would work well in a system with a camera that watched as our eyes move around on a page
-  - the GUI would change as your eyes move
-  - use of saccades
-  - there's no need to present complete names of things on the screen until the user is looking directly at them
-  - I could position the mouse at a context node, which would cause other nodes to become highlighted
-   - as my eyes move around, I would see information about all the highlighted nodes
-  - perhaps when my eye rests on a highlighted node, what it's connected to would also temporarily highlight
-   - you could quickly glance about to see the overall connections
-
-* need a good way to zoom in on a small part of a large circle packing without feeling sea sick
-
-* use hardware acceleration; WebGL
-  - circle packing with threejs ?
-
-References (in no particular order)
-----------
-(1) Knuth, Donald (1973) The Art of Computer Programming, 2nd ed
-    volume 1, section 2.3 Trees
-(2) David Harel, "On Visual Formalisms" paper
-(3) David Harel, "Statecharts: A visual formalism for complex systems" paper
-(4) google: Universal User Interface
-    there doesn't seem to be anything that corresponds directly to what I'm looking for
-(5) http://andrewdoble.blogspot.ca/2013/07/the-universal-user-interface.html
-(6) http://en.wikipedia.org/wiki/Usability
-    Usability is the ease of use and learnability of a human-made object.
-(7) www.jeffreynichols.com/papers/a17-nichols.pdf
-    Creating a Lightweight User Interface Description Language:
-     An Overview and Analysis of the Personal Universal Controller Project
-(8) http://en.wikipedia.org/wiki/Tree_%28data_structure%29
-(9) http://d3js.org/
-(10) http://bl.ocks.org/mbostock/4063530
-     D3 circle packing
-(11) https://github.com/mbostock/d3/wiki/Pack-Layout
-     "Enclosure diagrams use containment (nesting) to represent the hierarchy. The size of each leaf node’s circle reveals a quantitative dimension of each data point. The enclosing circles show the approximate cumulative size of each subtree, but note that because of wasted space there is some distortion between levels; only the leaf nodes can be compared accurately. Although circle packing does not use space as efficiently as a treemap, the “wasted” space more prominently reveals the hierarchy."
-(12) http://en.wikipedia.org/wiki/Circle_packing
-(13) http://en.wikipedia.org/wiki/Sphere_packing
-(14) notes in my paper notebook: April 28, May 7
-(15) google: open source eye tracking software
-(16) http://labs.unwieldy.net/moocirclepack/
-     https://code.google.com/p/moocirclepack/
-     Canvas-based JavaSript library from 2008
-(17) http://www.primordion.com/Xholon/webEdition/HTModL/
-     "HTModL is valid HTML repurposed for modeling and app (web application) development, rather than HTML in its traditional role as markup."
-(18) http://metapatterns.wikidot.com/bkgd:metapatsoverview
-     clonon vs holon
-
-]]></Notes> 
-
-<_-.XholonClass>
-
-  <UuiSystem/>
-  <Node>
-    <InternalNode/>
-    <ExternalNode/> <!-- leaf node -->
-    <AdjacentNode/> <!-- a node that's part of a graph -->
-  </Node>
-  
-</_-.XholonClass>
-
-<xholonClassDetails>
-  <AdjacentNode xhType="XhtypePureActiveObject">
-    <port name="port" index="0" connector="../InternalNode/ExternalNode"/>
-  </AdjacentNode>
-</xholonClassDetails>
-
-<UuiSystem>
-  <InternalNode>
-    <ExternalNode/>
-  </InternalNode>
-  <AdjacentNode roleName="one"/>
-  <AdjacentNode roleName="two"/>
-</UuiSystem>
-
-<ExternalNodebehavior implName="org.primordion.xholon.base.Behavior_gwtjs"><![CDATA[
-  var node;
-  var beh = {
-    postConfigure: function() {
-      node = this.cnode.parent();
-      node.println("I am a " + node.xhc().name() + ", also known as a leaf node.");
-      $wnd.xh.param("MaxProcessLoops","1");
-      $wnd.xh.param("AllowConfigSrv","false");
-      this.cnode.remove();
-      $wnd.xh.xport("_d3,CirclePack", $wnd.xh.root().first());
-    }
-  }
-]]></ExternalNodebehavior>
-
-<SvgClient><Attribute_String roleName="svgUri"><![CDATA[data:image/svg+xml,
-
-]]></Attribute_String><Attribute_String roleName="setup">${MODELNAME_DEFAULT},${SVGURI_DEFAULT}</Attribute_String></SvgClient>
-
-</XholonWorkbook>
